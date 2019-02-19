@@ -36,4 +36,41 @@ docker run --rm -it -v $PWD:/srv valian/docker-python-opencv-ffmpeg
 >>> import cv2; cv2.VideoCapture(0).read()
 # truncated for transparency
 (True, array([[[ 0, 43, 37], ...]], dtype=uint8))
+
+
 ```
+## Install Jupyter
+
+You can install Jupyter inside the container using:
+
+```bash
+docker run valian/docker-python-opencv-ffmpeg bash -c "pip install jupyter"
+```
+
+After Installing Jupyter in the OpenCV container, a new docker will be created. List the latest image using:
+
+```bash
+docker ps -l
+```
+
+Commit the changes using the latest image id and provide a new name to the latest docker image.
+
+```bash
+docker commit IMAGE_ID CONTAINER_NAME
+```
+
+Example:
+
+```bash
+docker commit 228853e69556 opencv-jupyter
+```
+
+## Run Jupyter 
+
+Run the Jupyter using the following command:
+
+```bash
+docker run --rm -p 8888:8888 -e JUPYTER_ENABLE_LAB=yes -v "$PWD":/home opencv-jupyter:latest jupyter notebook --ip 0.0.0.0 --allow-root
+```
+
+It is important to set Working Directory ($PWD) otherwise you will not be able to see any files in the directories.
