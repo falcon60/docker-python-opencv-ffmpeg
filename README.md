@@ -47,13 +47,13 @@ You can install Jupyter inside the container using:
 docker run valian/docker-python-opencv-ffmpeg bash -c "pip install jupyter"
 ```
 
-After Installing Jupyter in the OpenCV container, a new docker will be created. List the latest image using:
+After Installing Jupyter in the OpenCV container, a new docker image will be created. List the latest image using:
 
 ```bash
 docker ps -l
 ```
 
-Commit the changes using the latest image id and provide a new name to the latest docker image.
+Commit the changes using the latest image id and provide a new container name to the latest docker image.
 
 ```bash
 docker commit IMAGE_ID CONTAINER_NAME
